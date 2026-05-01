@@ -9,7 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Nacionalidad {
-
     @Id
     @Column(length = 5)
     private String iso;

@@ -10,8 +10,8 @@ import java.util.List;
 
 @Service
 public class NacionalidadService {
-
-    @Autowired private NacionalidadRepository nacionalidadRepository;
+    @Autowired
+    private NacionalidadRepository nacionalidadRepository;
 
     public List<Nacionalidad> findAll() {
         List<Nacionalidad> lista = new ArrayList<>();

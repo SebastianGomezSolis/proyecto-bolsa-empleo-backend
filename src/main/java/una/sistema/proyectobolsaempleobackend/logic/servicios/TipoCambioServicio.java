@@ -11,7 +11,6 @@ import java.net.URL;
 
 @Service
 public class TipoCambioServicio {
-
     private static final String API_URL = "https://api.hacienda.go.cr/indicadores/tc/dolar";
 
     public TipoCambio obtenerTipoCambio() {

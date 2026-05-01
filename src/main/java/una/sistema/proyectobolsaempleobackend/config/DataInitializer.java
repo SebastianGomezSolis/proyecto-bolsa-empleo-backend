@@ -8,8 +8,11 @@ import una.sistema.proyectobolsaempleobackend.logic.servicios.AdministradorServi
 
 @Component
 public class DataInitializer implements CommandLineRunner {
-    @Autowired private UsuarioRepository usuarioRepository;
-    @Autowired private AdministradorService administradorService;
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private AdministradorService administradorService;
 
     @Override
     public void run(String... args) {

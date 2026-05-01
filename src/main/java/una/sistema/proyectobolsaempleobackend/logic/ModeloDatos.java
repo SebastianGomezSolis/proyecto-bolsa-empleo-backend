@@ -6,7 +6,6 @@ import una.sistema.proyectobolsaempleobackend.logic.servicios.*;
 
 @Component
 public class ModeloDatos {
-
     @Autowired private AuthService authService;
     @Autowired private UsuarioService usuarioService;
     @Autowired private AdministradorService administradorService;
@@ -21,17 +20,17 @@ public class ModeloDatos {
     @Autowired private ReporteService reporteService;
     @Autowired private TipoCambioServicio tipoCambioServicio;
 
-    public AuthService getAuthService()                                   { return authService; }
-    public UsuarioService getUsuarioService()                             { return usuarioService; }
-    public AdministradorService getAdministradorService()                 { return administradorService; }
-    public EmpresaService getEmpresaService()                             { return empresaService; }
-    public OferenteService getOferenteService()                           { return oferenteService; }
-    public NacionalidadService getNacionalidadService()                   { return nacionalidadService; }
-    public CaracteristicaService getCaracteristicaService()               { return caracteristicaService; }
-    public HabilidadService getHabilidadService()                         { return habilidadService; }
-    public PuestoService getPuestoService()                               { return puestoService; }
-    public PuestoCaracteristicaService getPuestoCaracteristicaService()   { return puestoCaracteristicaService; }
-    public MatchingService getMatchingService()                           { return matchingService; }
-    public ReporteService getReporteService()                             { return reporteService; }
-    public TipoCambioServicio getTipoCambioServicio()                     { return tipoCambioServicio; }
+    public AuthService getAuthService(){ return authService; }
+    public UsuarioService getUsuarioService() { return usuarioService; }
+    public AdministradorService getAdministradorService() { return administradorService; }
+    public EmpresaService getEmpresaService() { return empresaService; }
+    public OferenteService getOferenteService() { return oferenteService; }
+    public NacionalidadService getNacionalidadService() { return nacionalidadService; }
+    public CaracteristicaService getCaracteristicaService() { return caracteristicaService; }
+    public HabilidadService getHabilidadService() { return habilidadService; }
+    public PuestoService getPuestoService() { return puestoService; }
+    public PuestoCaracteristicaService getPuestoCaracteristicaService() { return puestoCaracteristicaService; }
+    public MatchingService getMatchingService() { return matchingService; }
+    public ReporteService getReporteService() { return reporteService; }
+    public TipoCambioServicio getTipoCambioServicio() { return tipoCambioServicio; }
 }

@@ -9,7 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Administrador {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

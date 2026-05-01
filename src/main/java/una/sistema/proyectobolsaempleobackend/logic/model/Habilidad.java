@@ -10,7 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Habilidad {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

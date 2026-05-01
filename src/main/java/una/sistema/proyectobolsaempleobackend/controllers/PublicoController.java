@@ -13,7 +13,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/publico")
 public class PublicoController {
-    @Autowired private ModeloDatos modeloDatos;
+    @Autowired
+    private ModeloDatos modeloDatos;
 
     @GetMapping("/puestos")
     public ResponseEntity<?> puestosPublicos() {

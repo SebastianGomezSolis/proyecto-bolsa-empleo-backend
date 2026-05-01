@@ -9,8 +9,8 @@ import java.util.List;
 
 @Service
 public class PuestoCaracteristicaService {
-
-    @Autowired private PuestoCaracteristicaRepository puestoCaracteristicaRepository;
+    @Autowired
+    private PuestoCaracteristicaRepository puestoCaracteristicaRepository;
 
     public PuestoCaracteristica save(PuestoCaracteristica pc) {
         return puestoCaracteristicaRepository.save(pc);

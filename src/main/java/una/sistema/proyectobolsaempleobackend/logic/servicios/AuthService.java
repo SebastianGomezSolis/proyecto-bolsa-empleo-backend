@@ -10,18 +10,22 @@ import una.sistema.proyectobolsaempleobackend.logic.model.*;
 
 @Service
 public class AuthService {
-
-    @Autowired private UsuarioService usuarioService;
+    @Autowired
+    private UsuarioService usuarioService;
     @Autowired private PasswordHash passwordHash;
-    @Autowired private SesionUsuarioBean sesionUsuarioBean;
-    @Autowired private AdministradorRepository administradorRepository;
-    @Autowired private EmpresaRepository empresaRepository;
-    @Autowired private OferenteRepository oferenteRepository;
 
-    /**
-     * Autentica al usuario y carga la sesión con su rol y referenciaId al perfil.
-     * @return null si OK, mensaje de error si falla
-     */
+    @Autowired
+    private SesionUsuarioBean sesionUsuarioBean;
+
+    @Autowired
+    private AdministradorRepository administradorRepository;
+
+    @Autowired
+    private EmpresaRepository empresaRepository;
+
+    @Autowired
+    private OferenteRepository oferenteRepository;
+
     public String login(LoginRequest request) {
         if (request.getCorreo() == null || request.getClave() == null) {
             return "Credenciales inválidas";
@@ -36,7 +40,6 @@ public class AuthService {
             return "Credenciales inválidas";
         }
 
-        // Resolver referenciaId según el rol
         Integer referenciaId = resolverReferenciaId(usuario);
 
         sesionUsuarioBean.login(usuario.getId(), usuario.getCorreo(), usuario.getRol(), referenciaId);

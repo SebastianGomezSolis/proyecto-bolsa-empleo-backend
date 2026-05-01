@@ -10,10 +10,14 @@ import java.util.List;
 
 @Service
 public class OferenteService {
+    @Autowired
+    private OferenteRepository oferenteRepository;
 
-    @Autowired private OferenteRepository oferenteRepository;
-    @Autowired private UsuarioService usuarioService;
-    @Autowired private NacionalidadRepository nacionalidadRepository;
+    @Autowired
+    private UsuarioService usuarioService;
+
+    @Autowired
+    private NacionalidadRepository nacionalidadRepository;
 
     public Iterable<Oferente> findAll() {
         return oferenteRepository.findAll();
@@ -30,17 +34,31 @@ public class OferenteService {
     public String registrar(String correo, String clave, String identificacion,
                             String nombre, String primerApellido, String isoNacionalidad,
                             String telefono, String lugarResidencia) {
-        if (correo == null || correo.isBlank())               return "El correo es requerido";
-        if (clave == null || clave.isBlank())                 return "La clave es requerida";
-        if (identificacion == null || identificacion.isBlank()) return "La identificación es requerida";
-        if (nombre == null || nombre.isBlank())               return "El nombre es requerido";
-        if (primerApellido == null || primerApellido.isBlank()) return "El primer apellido es requerido";
+        if (correo == null || correo.isBlank())
+            return "El correo es requerido";
 
-        if (usuarioService.existeCorreo(correo))              return "El correo ya está registrado";
-        if (oferenteRepository.existsByIdentificacion(identificacion)) return "La identificación ya está registrada";
+        if (clave == null || clave.isBlank())
+            return "La clave es requerida";
+
+        if (identificacion == null || identificacion.isBlank())
+            return "La identificación es requerida";
+
+        if (nombre == null || nombre.isBlank())
+            return "El nombre es requerido";
+
+        if (primerApellido == null || primerApellido.isBlank())
+            return "El primer apellido es requerido";
+
+        if (usuarioService.existeCorreo(correo))
+            return "El correo ya está registrado";
+
+        if (oferenteRepository.existsByIdentificacion(identificacion))
+            return "La identificación ya está registrada";
 
         Nacionalidad nac = nacionalidadRepository.findById(isoNacionalidad).orElse(null);
-        if (nac == null) return "Nacionalidad inválida";
+
+        if (nac == null)
+            return "Nacionalidad inválida";
 
         Usuario usuario = new Usuario();
         usuario.setCorreo(correo);

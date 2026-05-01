@@ -10,8 +10,8 @@ import java.util.List;
 
 @Service
 public class CaracteristicaService {
-
-    @Autowired private CaracteristicaRepository caracteristicaRepository;
+    @Autowired
+    private CaracteristicaRepository caracteristicaRepository;
 
     public Caracteristica findById(Integer id) {
         return caracteristicaRepository.findById(id).orElse(null);

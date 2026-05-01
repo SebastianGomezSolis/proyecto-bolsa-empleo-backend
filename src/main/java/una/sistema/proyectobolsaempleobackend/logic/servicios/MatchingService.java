@@ -21,11 +21,17 @@ import java.util.Set;
 
 @Service
 public class MatchingService {
+    @Autowired
+    private PuestoRepository puestoRepository;
 
-    @Autowired private PuestoRepository puestoRepository;
-    @Autowired private OferenteRepository oferenteRepository;
-    @Autowired private HabilidadRepository habilidadRepository;
-    @Autowired private PuestoCaracteristicaRepository puestoCaracteristicaRepository;
+    @Autowired
+    private OferenteRepository oferenteRepository;
+
+    @Autowired
+    private HabilidadRepository habilidadRepository;
+
+    @Autowired
+    private PuestoCaracteristicaRepository puestoCaracteristicaRepository;
 
     public Map<Integer, Integer> construirVectorPuesto(Integer puestoId) {
         Map<Integer, Integer> vector = new HashMap<>();

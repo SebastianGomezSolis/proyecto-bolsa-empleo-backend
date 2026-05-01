@@ -9,8 +9,8 @@ import java.util.List;
 
 @Service
 public class HabilidadService {
-
-    @Autowired private HabilidadRepository habilidadRepository;
+    @Autowired
+    private HabilidadRepository habilidadRepository;
 
     public List<Habilidad> findByOferente(Integer oferenteId) {
         return habilidadRepository.findByOferenteId(oferenteId);

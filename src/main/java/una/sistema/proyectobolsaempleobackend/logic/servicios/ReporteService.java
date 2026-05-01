@@ -19,8 +19,8 @@ import java.util.List;
 
 @Service
 public class ReporteService {
-
-    @Autowired private PuestoService puestoService;
+    @Autowired
+    private PuestoService puestoService;
 
     public byte[] generarPdfPuestosPorMesYAnio(int mes, int anio) {
         YearMonth yearMonth = YearMonth.of(anio, mes);

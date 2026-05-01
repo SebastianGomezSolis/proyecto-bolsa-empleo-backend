@@ -15,8 +15,8 @@ import java.io.InputStream;
 
 @Component
 public class NacionalidadExcelLoader implements CommandLineRunner {
-
-    @Autowired private NacionalidadService nacionalidadService;
+    @Autowired
+    private NacionalidadService nacionalidadService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -35,11 +35,11 @@ public class NacionalidadExcelLoader implements CommandLineRunner {
             for (Row row : sheet) {
                 if (row.getRowNum() == 0) continue;
 
-                String iso          = formatter.formatCellValue(row.getCell(0)).trim();
-                String nombre       = formatter.formatCellValue(row.getCell(1)).trim();
-                String descripcion  = formatter.formatCellValue(row.getCell(2)).trim();
-                String iso3         = formatter.formatCellValue(row.getCell(3)).trim();
-                String codigoNumeroTexto   = formatter.formatCellValue(row.getCell(4)).trim();
+                String iso = formatter.formatCellValue(row.getCell(0)).trim();
+                String nombre = formatter.formatCellValue(row.getCell(1)).trim();
+                String descripcion = formatter.formatCellValue(row.getCell(2)).trim();
+                String iso3 = formatter.formatCellValue(row.getCell(3)).trim();
+                String codigoNumeroTexto = formatter.formatCellValue(row.getCell(4)).trim();
                 String codigoTelefonoTexto = formatter.formatCellValue(row.getCell(5)).trim();
 
                 if (iso.isBlank() || nombre.isBlank()) continue;

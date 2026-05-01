@@ -11,7 +11,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api")
 public class PuestosController {
-    @Autowired private ModeloDatos modeloDatos;
+    @Autowired
+    private ModeloDatos modeloDatos;
 
     @GetMapping("/puestos/buscar")
     public ResponseEntity<?> buscarPuestos(@RequestParam(required = false) List<Integer> caracteristicaIds) {

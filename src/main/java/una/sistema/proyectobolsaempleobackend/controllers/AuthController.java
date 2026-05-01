@@ -15,9 +15,11 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+    @Autowired
+    private ModeloDatos modeloDatos;
 
-    @Autowired private ModeloDatos modeloDatos;
-    @Autowired private SesionUsuarioBean sesionUsuarioBean;
+    @Autowired
+    private SesionUsuarioBean sesionUsuarioBean;
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
@@ -26,9 +28,9 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
         }
         return ResponseEntity.ok(Map.of(
-            "id",           sesionUsuarioBean.getId(),
-            "correo",       sesionUsuarioBean.getCorreo(),
-            "rol",          sesionUsuarioBean.getRol().name(),
+            "id", sesionUsuarioBean.getId(),
+            "correo", sesionUsuarioBean.getCorreo(),
+            "rol", sesionUsuarioBean.getRol().name(),
             "referenciaId", sesionUsuarioBean.getReferenciaId()
         ));
     }
@@ -66,9 +68,9 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("No hay sesión activa");
         }
         return ResponseEntity.ok(Map.of(
-            "id",           sesionUsuarioBean.getId(),
-            "correo",       sesionUsuarioBean.getCorreo(),
-            "rol",          sesionUsuarioBean.getRol().name(),
+            "id", sesionUsuarioBean.getId(),
+            "correo", sesionUsuarioBean.getCorreo(),
+            "rol", sesionUsuarioBean.getRol().name(),
             "referenciaId", sesionUsuarioBean.getReferenciaId()
         ));
     }

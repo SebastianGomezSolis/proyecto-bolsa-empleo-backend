@@ -9,9 +9,11 @@ import una.sistema.proyectobolsaempleobackend.logic.model.Usuario;
 
 @Service
 public class AdministradorService {
+    @Autowired
+    private AdministradorRepository administradorRepository;
 
-    @Autowired private AdministradorRepository administradorRepository;
-    @Autowired private UsuarioService usuarioService;
+    @Autowired
+    private UsuarioService usuarioService;
 
     public Iterable<Administrador> findAll() {
         return administradorRepository.findAll();
@@ -22,12 +24,20 @@ public class AdministradorService {
     }
 
     public String crear(String correo, String clave, String identificacion, String nombre) {
-        if (correo == null || correo.isBlank())               return "El correo es requerido";
-        if (clave == null || clave.isBlank())                 return "La clave es requerida";
-        if (identificacion == null || identificacion.isBlank()) return "La identificación es requerida";
-        if (nombre == null || nombre.isBlank())               return "El nombre es requerido";
+        if (correo == null || correo.isBlank())
+            return "El correo es requerido";
 
-        if (usuarioService.existeCorreo(correo)) return "El correo ya está registrado";
+        if (clave == null || clave.isBlank())
+            return "La clave es requerida";
+
+        if (identificacion == null || identificacion.isBlank())
+            return "La identificación es requerida";
+
+        if (nombre == null || nombre.isBlank())
+            return "El nombre es requerido";
+
+        if (usuarioService.existeCorreo(correo))
+            return "El correo ya está registrado";
 
         Usuario usuario = new Usuario();
         usuario.setCorreo(correo);

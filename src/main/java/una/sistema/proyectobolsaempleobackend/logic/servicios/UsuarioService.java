@@ -7,9 +7,11 @@ import una.sistema.proyectobolsaempleobackend.logic.model.Usuario;
 
 @Service
 public class UsuarioService {
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
-    @Autowired private UsuarioRepository usuarioRepository;
-    @Autowired private PasswordHash passwordHash;
+    @Autowired
+    private PasswordHash passwordHash;
 
     public Usuario findByCorreo(String correo) {
         return usuarioRepository.findByCorreo(correo).orElse(null);

@@ -13,7 +13,6 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -35,9 +34,14 @@ public class EmpresaController {
     // ─── Perfil ────────────────────────────────────────────────────────────
     @GetMapping("/perfil")
     public ResponseEntity<?> perfil() {
-        if (!sesionUsuarioBean.isEmpresa()) return forbidden();
+        if (!sesionUsuarioBean.isEmpresa())
+            return forbidden();
+
         Empresa empresa = modeloDatos.getEmpresaService().findById(sesionUsuarioBean.getReferenciaId());
-        if (empresa == null) return ResponseEntity.notFound().build();
+
+        if (empresa == null)
+            return ResponseEntity.notFound().build();
+
         return ResponseEntity.ok(empresa);
     }
 
@@ -58,7 +62,7 @@ public class EmpresaController {
 
         String descripcion = (String) body.get("descripcion");
         String salarioStr  = String.valueOf(body.get("salario"));
-        String tipo        = body.get("tipoPublicacion") != null
+        String tipo = body.get("tipoPublicacion") != null
                 ? (String) body.get("tipoPublicacion") : "publico";
 
         @SuppressWarnings("unchecked")
@@ -149,7 +153,6 @@ public class EmpresaController {
         Puesto puesto = modeloDatos.getPuestoService().findById(id);
         if (puesto == null) return ResponseEntity.notFound().build();
 
-        // Verificar que el puesto pertenece a la empresa en sesión
         if (puesto.getEmpresa() == null
                 || !puesto.getEmpresa().getId().equals(sesionUsuarioBean.getReferenciaId()))
             return forbidden();
@@ -168,9 +171,9 @@ public class EmpresaController {
         Puesto puesto = modeloDatos.getPuestoService().findById(puestoId);
 
         Map<String, Object> resp = new HashMap<>();
-        resp.put("oferente",    oferente);
+        resp.put("oferente", oferente);
         resp.put("habilidades", modeloDatos.getHabilidadService().findByOferente(id));
-        resp.put("puesto",      puesto != null ? puesto : Map.of());
+        resp.put("puesto", puesto != null ? puesto : Map.of());
         return ResponseEntity.ok(resp);
     }
 
